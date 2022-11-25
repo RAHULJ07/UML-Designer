@@ -10,7 +10,7 @@ public class Main extends JFrame implements ActionListener{
     JMenuItem newButton = new JMenuItem("New");
     JMenuItem saveButton = new JMenuItem("Save");
     JMenuItem loadButton = new JMenuItem("Load");
-    StatusBar status = new StatusBar();
+    static StatusBar status = StatusBar.getStatus();
     public Main(){
         setLayout(new BorderLayout(3, 2));
         getContentPane().add(appPanel);
