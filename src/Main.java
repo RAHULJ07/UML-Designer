@@ -10,9 +10,11 @@ public class Main extends JFrame implements ActionListener{
     JMenuItem newButton = new JMenuItem("New");
     JMenuItem saveButton = new JMenuItem("Save");
     JMenuItem loadButton = new JMenuItem("Load");
+    StatusBar status = new StatusBar();
     public Main(){
         setLayout(new BorderLayout(3, 2));
         getContentPane().add(appPanel);
+        getContentPane().add(status, java.awt.BorderLayout.SOUTH);
         fileMenu.add(newButton);
         fileMenu.add(saveButton);
         fileMenu.add(loadButton);
