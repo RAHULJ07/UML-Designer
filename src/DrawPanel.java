@@ -1,5 +1,6 @@
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -7,32 +8,65 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DrawPanel extends JPanel implements Observable, MouseListener, MouseMotionListener {
-    
-    private static DrawPanel drawPanel;
-    private static ArrayList<Rectangle> rectangles;
-    private static ArrayList<Rectangle> rectanglesClicked;
-    private static List<Observer> observerList;
 
-    private DrawPanel(){
-    }
+    private ArrayList<Rectangle> rectangles;
+    private ArrayList<LineCoordinates> coordinates;
+    private ArrayList<Rectangle> rectanglesClicked;
+    private List<Observer> observerList;
+    private String aType;
 
-    public static DrawPanel getDrawPanel() {
-        if (drawPanel == null) {
-            drawPanel = new DrawPanel();
-            rectangles = new ArrayList<>();
-            rectanglesClicked = new ArrayList<>();
-            observerList = new ArrayList<Observer>();
-        }
-        drawPanel.setLayout(null);
-        drawPanel.addMouseListener(drawPanel);
-        return drawPanel;
+    public DrawPanel(){
+        rectangles = new ArrayList<>();
+        rectanglesClicked = new ArrayList<>();
+        observerList = new ArrayList<>();
+        coordinates = new ArrayList<>();
+        setLayout(null);
+        addMouseListener(this);
     }
 
     public void boxClickTracker(Rectangle rectangle) {
         rectanglesClicked.add(rectangle);
+        repaint();
+    }
+
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D) g;
+        Line line;
+        InheritanceArrow inheritanceArrow;
+        CompositionArrow compositionArrow;
+        AggregationArrow aggregationArrow;
+
+        LineCoordinates coordinate;
         if (rectanglesClicked.size() == 2) {
-            System.out.println("Invoke an arrow function");
+            coordinate = new LineCoordinates(rectanglesClicked.get(0).getX(),rectanglesClicked.get(0).getY(),
+                    rectanglesClicked.get(1).getX(), rectanglesClicked.get(1).getY(), ArrowType.getArrowType());
+            coordinates.add(coordinate);
             rectanglesClicked.clear();
+        }
+        if(coordinates.size()>0){
+            for(LineCoordinates coord : coordinates){
+                aType= coord.getArrowType();
+                line = new Line(coord);
+                if(aType.equals("Composition") ){
+                    compositionArrow = new CompositionArrow(coord);
+                    compositionArrow.add(line);
+                    compositionArrow.draw(g2);
+
+                }
+                else if (aType.equals("Aggregation")){
+                    aggregationArrow = new AggregationArrow(coord);
+                    aggregationArrow.add(line);
+                    aggregationArrow.draw(g2);
+
+                }
+                else if( aType.equals("Inheritance")){
+                    inheritanceArrow = new InheritanceArrow(coord);
+                    inheritanceArrow.add(line);
+                    inheritanceArrow.draw(g2);
+
+                }
+            }
         }
     }
 
@@ -49,12 +83,11 @@ public class DrawPanel extends JPanel implements Observable, MouseListener, Mous
             if (className.length() == 0) {
                 className = "Enter class name";
             }
-            Rectangle newRectangle = new Rectangle(x, y, className);
+            Rectangle newRectangle = new Rectangle(x, y, className, this);
             rectangles.add(newRectangle);
-            drawPanel.add(newRectangle);
+            add(newRectangle);
             updateObserver(className);
-            drawPanel.revalidate();
-            drawPanel.repaint();
+            repaint();
         }
         
     }
