@@ -76,6 +76,9 @@ public class DrawPanel extends JPanel implements Observable, MouseListener, Mous
         int x = e.getX();
         int y = e.getY();
         String className = JOptionPane.showInputDialog("Enter class name");
+        StatusBar status = StatusBar.getStatus();
+        String statusUpdate = String.format("Creating class: %s @coordinates (%d, %d)", className, x, y);
+        status.setStatus(statusUpdate);
         if ((className != null)) {
             if (className.length() == 0) {
                 className = "Enter class name";

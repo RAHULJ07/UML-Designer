@@ -11,14 +11,19 @@ public class Main extends JFrame implements ActionListener{
     JMenuItem newButton = new JMenuItem("New");
     JMenuItem saveButton = new JMenuItem("Save");
     JMenuItem loadButton = new JMenuItem("Load");
+
     JRadioButtonMenuItem composition = new JRadioButtonMenuItem("Composition");
     JRadioButtonMenuItem aggregation = new JRadioButtonMenuItem("Aggregation");
     JRadioButtonMenuItem inheritance = new JRadioButtonMenuItem("Inheritance");
     ButtonGroup group = new ButtonGroup();
+
+    static StatusBar status = StatusBar.getStatus();
+
     public Main(){
         appPanel = new AppPanel();
         setLayout(new BorderLayout(3, 2));
         getContentPane().add(appPanel);
+        getContentPane().add(status, java.awt.BorderLayout.SOUTH);
         fileMenu.add(newButton);
         fileMenu.add(saveButton);
         fileMenu.add(loadButton);
