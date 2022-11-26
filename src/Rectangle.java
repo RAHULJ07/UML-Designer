@@ -10,8 +10,8 @@ public class Rectangle extends JPanel implements MouseInputListener {
 
    int xPos, yPos;
    String className = "";
-
-   public Rectangle(int x, int y, String className) {
+   DrawPanel drawPanel;
+   public Rectangle(int x, int y, String className, DrawPanel drawPanel) {
       this.className = className;
       addMouseListener(this);
       this.setLayout(new GridBagLayout());
@@ -19,10 +19,11 @@ public class Rectangle extends JPanel implements MouseInputListener {
       this.xPos = x;
       this.yPos = y;
       this.setLocation(x, y);
-      this.setSize(200, 60);
+      this.setSize(80, 50);
       JLabel label = new JLabel(className);
       this.add(label);
       this.setBackground(Color.YELLOW);
+      this.drawPanel = drawPanel;
    }
 
    @Override
@@ -32,7 +33,7 @@ public class Rectangle extends JPanel implements MouseInputListener {
    }
 
    public void clickEmulator() {
-      DrawPanel.getDrawPanel().boxClickTracker(this);
+      drawPanel.boxClickTracker(this);
    }
 
    @Override
