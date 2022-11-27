@@ -36,6 +36,7 @@ public class DrawPanel extends JPanel implements Observable, MouseListener, Mous
         InheritanceArrow inheritanceArrow;
         CompositionArrow compositionArrow;
         AggregationArrow aggregationArrow;
+        
 
         LineCoordinates coordinate;
         if (rectanglesClicked.size() == 2) {
@@ -59,13 +60,16 @@ public class DrawPanel extends JPanel implements Observable, MouseListener, Mous
                     aggregationArrow.add(line);
                     aggregationArrow.draw(g2);
 
+
                 }
                 else if( aType.equals("Inheritance")){
                     inheritanceArrow = new InheritanceArrow(coord);
                     inheritanceArrow.add(line);
                     inheritanceArrow.draw(g2);
 
+
                 }
+                
             }
         }
     }
@@ -76,9 +80,6 @@ public class DrawPanel extends JPanel implements Observable, MouseListener, Mous
         int x = e.getX();
         int y = e.getY();
         String className = JOptionPane.showInputDialog("Enter class name");
-        StatusBar status = StatusBar.getStatus();
-        String statusUpdate = String.format("Creating class: %s @coordinates (%d, %d)", className, x, y);
-        status.setStatus(statusUpdate);
         if ((className != null)) {
             if (className.length() == 0) {
                 className = "Enter class name";
@@ -101,6 +102,7 @@ public class DrawPanel extends JPanel implements Observable, MouseListener, Mous
     public void updateObserver(String className){
         for (Observer observer : observerList) {
             observer.update(className);
+            
         }
     }
 
