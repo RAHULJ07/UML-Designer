@@ -15,6 +15,10 @@ public class DrawPanel extends JPanel implements Observable, MouseListener, Mous
     private List<Observer> observerList;
     private String aType;
 
+    public ArrayList<LineCoordinates> getCoordinates() {
+        return coordinates;
+    }
+
     public DrawPanel(){
         rectangles = new ArrayList<>();
         rectanglesClicked = new ArrayList<>();

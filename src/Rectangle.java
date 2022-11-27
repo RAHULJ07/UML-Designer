@@ -8,8 +8,9 @@ import java.awt.event.MouseEvent;
 
 public class Rectangle extends JPanel implements MouseInputListener {
 
-   int xPos, yPos;
-   String className = "";
+   int xPos, yPos, preX, preY;
+   boolean pressOut = false;
+   String className;
    DrawPanel drawPanel;
    public Rectangle(int x, int y, String className, DrawPanel drawPanel) {
       this.className = className;
@@ -26,6 +27,23 @@ public class Rectangle extends JPanel implements MouseInputListener {
       this.drawPanel = drawPanel;
    }
 
+   public void moved(int x, int y){
+      for( LineCoordinates coord : drawPanel.getCoordinates()){
+         if((coord.getStartX()== xPos) && (coord.getStartY()== yPos))
+         {
+            coord.setStartX(x);
+            coord.setStartY(y);
+         }
+         else if((coord.getEndX()== xPos) && (coord.getEndY()== yPos)){
+            coord.setEndX(x);
+            coord.setEndY(y);
+         }
+      }
+      this.xPos = x;
+      this.yPos = y;
+      this.setLocation(x, y);
+   }
+
    @Override
    public void mouseClicked(MouseEvent e) {
       System.out.println("Clicked on a box");
@@ -38,12 +56,18 @@ public class Rectangle extends JPanel implements MouseInputListener {
 
    @Override
    public void mousePressed(MouseEvent e) {
-      
+      preX = xPos- e.getX();
+      preY = yPos- e.getY();
+         moved(preX + e.getX(), preY+ e.getY());
+         repaint();
+         drawPanel.repaint();
    }
 
    @Override
    public void mouseReleased(MouseEvent e) {
-      
+      moved(preX + e.getX(), preY+ e.getY());
+      repaint();
+      drawPanel.repaint();
    }
 
    @Override
@@ -58,7 +82,11 @@ public class Rectangle extends JPanel implements MouseInputListener {
 
    @Override
    public void mouseDragged(MouseEvent e) {
-      
+      if(!pressOut){
+         moved(preX + e.getX(), preY+ e.getY());
+         repaint();
+         drawPanel.repaint();
+      }
    }
 
    @Override
