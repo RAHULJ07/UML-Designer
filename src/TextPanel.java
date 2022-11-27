@@ -29,5 +29,6 @@ public class TextPanel extends Observer {
     public void update(String classname){
         code.append("\n"+classname);
         textArea.setText(code.toString());
+        StatusBar.getStatus().setStatus(String.format("Creating class: %s", classname));
     }
 }
