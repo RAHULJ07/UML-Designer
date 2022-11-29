@@ -1,5 +1,8 @@
+package Controller;
+
+import Model.LineCoordinates;
+
 import java.awt.*;
-import java.util.ArrayList;
 
 public class Line implements IArrow {
 

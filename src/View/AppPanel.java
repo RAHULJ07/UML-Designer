@@ -1,3 +1,8 @@
+package View;
+
+import Model.Storage;
+import View.DrawPanel;
+
 import java.awt.Color;
 
 import javax.swing.JLayeredPane;
@@ -18,6 +23,6 @@ public class AppPanel extends JLayeredPane{
         TextPanel textPanel = TextPanel.getTextPanel();
         textPanel.tPanel.setBounds(0,0,500,1000);
         add(textPanel.tPanel);
-        drawPanel.addObserver(textPanel);
+        Storage.getInstance().addObserver(textPanel);
     }
 }

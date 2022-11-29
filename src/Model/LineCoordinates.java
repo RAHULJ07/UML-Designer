@@ -1,3 +1,7 @@
+package Model;
+
+import java.io.Serializable;
+
 public class LineCoordinates {
 
     private int startX;
@@ -53,5 +57,12 @@ public class LineCoordinates {
 
     public String getArrowType() {
         return arrowType;
+    }
+
+    @Override
+    public String toString(){
+        String str;
+        str = getArrowType() + "," + getStartX() + "," + getStartY()+ "," + getEndX() + "," + getEndY();
+        return str;
     }
 }

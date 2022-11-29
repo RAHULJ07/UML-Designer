@@ -1,11 +1,16 @@
+package Controller;
+
+import Model.LineCoordinates;
+import View.StatusBar;
+
 import java.awt.*;
 
-public class InheritanceArrow extends Decorator{
+public class CompositionArrow extends Decorator {
 
     private LineCoordinates coord;
     private int x1, y1, x2, y2;
 
-    public InheritanceArrow(LineCoordinates coord) {
+    public CompositionArrow(LineCoordinates coord) {
         this.coord = coord;
     }
 
@@ -16,12 +21,13 @@ public class InheritanceArrow extends Decorator{
         y1 = coord.getStartY();
         x2 = coord.getEndX();
         y2 = coord.getEndY();
-        StatusBar.getStatus().setStatus(String.format("Drawing Inheritance from (%d, %d) to (%d, %d).", x1, y1, x2, y2));
+        StatusBar.getStatus().setStatus(String.format("Drawing Composition from (%d, %d) to (%d, %d).", x1, y1, x2, y2));
         double d = 10;
         double h = 15;
         int dx = x2 - x1, dy = y2 - y1;
         double D = Math.sqrt(dx*dx + dy*dy);
         double t = h/D;
+        double t1 = 2*h/D;
 
         double xt = (1-t) * x2 + t * x1;
         double yt = (1-t) * y2 + t * y1;
@@ -34,19 +40,14 @@ public class InheritanceArrow extends Decorator{
         double y4 = yt - m2 * sqrt;
         double x4 = xt - sqrt;
 
-        int[] xpoints = {x2, (int) x3, (int) x4};
-        int[] ypoints = {y2, (int) y3, (int) y4};
+        double x5 = (1-t1) * x2 + t1 * x1;
+        double y5 = (1-t1) * y2 + t1 * y1;
 
-        //g2d.drawPolygon(xpoints, ypoints, 3);
+        int[] xPoints = {x2, (int) x3, (int) x5, (int) x4};
+        int[] yPoints = {y2, (int) y3, (int) y5, (int) y4};
 
-        g2d.setColor(Color.getHSBColor(184, 172, 232));
-        g2d.fillPolygon(xpoints, ypoints, 3);
-        g2d.setColor(Color.BLUE);
-        g2d.drawPolygon(xpoints, ypoints, 3);
-
-
-
+        g2d.setColor(Color.BLACK);
+        g2d.fillPolygon(xPoints, yPoints, 4);
 
     }
-
 }

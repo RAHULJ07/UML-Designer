@@ -1,8 +1,11 @@
+import Controller.Controller;
+import View.AppPanel;
+import View.StatusBar;
+
 import java.awt.BorderLayout;
 import javax.swing.*;
-import java.awt.event.*;
 
-public class Main extends JFrame implements ActionListener{
+public class Main extends JFrame{
     AppPanel appPanel;
     JMenuBar menuBar = new JMenuBar();
     JMenu fileMenu = new JMenu("File");
@@ -19,7 +22,11 @@ public class Main extends JFrame implements ActionListener{
 
     static StatusBar status = StatusBar.getStatus();
 
+    Controller controller;
+
+
     public Main(){
+        controller = new Controller();
         appPanel = new AppPanel();
         setLayout(new BorderLayout(3, 2));
         getContentPane().add(appPanel);
@@ -29,15 +36,18 @@ public class Main extends JFrame implements ActionListener{
         fileMenu.add(loadButton);
         menuBar.add(fileMenu);
         menuBar.add(helpMenu);
+        newButton.addActionListener(controller);
+        saveButton.addActionListener(controller);
+        loadButton.addActionListener(controller);
         group.add(composition);
         relationship.add(composition);
         group.add(aggregation);
         relationship.add(aggregation);
         group.add(inheritance);
         relationship.add(inheritance);
-        composition.addActionListener(this);
-        aggregation.addActionListener(this);
-        inheritance.addActionListener(this);
+        composition.addActionListener(controller);
+        aggregation.addActionListener(controller);
+        inheritance.addActionListener(controller);
         menuBar.add(relationship);
         setJMenuBar(menuBar);
         setSize(1000, 1000);
@@ -45,22 +55,9 @@ public class Main extends JFrame implements ActionListener{
         setLocationRelativeTo(null);
         setVisible(true);
     }
+
     public static void main(String[] args) {
         JFrame main = new Main();
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e){
-
-        if(e.getSource() == composition){
-            ArrowType.arrowType = "Composition";
-        }
-        else if(e.getSource() == aggregation){
-            ArrowType.arrowType = "Aggregation";
-        }
-        else if(e.getSource() == inheritance){
-            ArrowType.arrowType = "Inheritance";
-        }
-
-    }
 }
