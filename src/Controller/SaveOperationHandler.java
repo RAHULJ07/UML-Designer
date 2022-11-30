@@ -25,14 +25,12 @@ public class SaveOperationHandler implements IHandler {
                 Storage storage = Storage.getInstance();
                 try {
                     FileWriter writer = new FileWriter(fileName);
-                    writer.write("Rectangles" + System.lineSeparator());
                     String str;
                     for (RectangleModel rectangle : storage.getRectangles()) {
                         str = rectangle.toString();
                         writer.write(str + System.lineSeparator());
                     }
 
-                    writer.write("LineCoordinates" + System.lineSeparator());
                     for (LineCoordinates coordinate : storage.getCoordinates()) {
                         str = coordinate.toString();
                         writer.write(str + System.lineSeparator());

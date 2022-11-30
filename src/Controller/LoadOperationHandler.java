@@ -29,27 +29,23 @@ public class LoadOperationHandler implements IHandler {
                 DrawPanel drawPanel = MainController.getInstance().getAppPanelController().getDrawPanelController().getDrawPanel();
                 while (scanner.hasNextLine()) {
                     String line = scanner.nextLine();
-                    if (line.startsWith("Rectangles")) {
-                        while (scanner.hasNextLine()) {
-                            line = scanner.nextLine();
-                            String[] str = line.split(",", 3);
-                            RectangleModel rectangleModel = new RectangleModel(Integer.parseInt(str[1]), Integer.parseInt(str[2]), str[0]);
-                            Rectangle rect = new Rectangle(rectangleModel);
-                            RectangleController rectangleController = new RectangleController(rect, rectangleModel, drawPanel);
-                            Storage.getInstance().addRectangle(rectangleModel);
-                            drawPanel.add(rect);
-                            drawPanel.repaint();
-                            Storage.getInstance().addRectangle(rectangleModel);
-                        }
-                    } else if (line.startsWith("LineCoordinates")) {
-                        while (scanner.hasNextLine()) {
-                            line = scanner.nextLine();
-                            String[] str = line.split(",", 5);
-                            LineCoordinates lineCoordinate = new LineCoordinates(Integer.parseInt(str[0]), Integer.parseInt(str[1]),
-                                    Integer.parseInt(str[2]), Integer.parseInt(str[3]),
-                                    str[4]);
-                            Storage.getInstance().addCoordinates(lineCoordinate);
-                        }
+                    if (line.startsWith("Rectangles")){
+                        String[] str = line.split(",", 4);
+                        RectangleModel rectangleModel = new RectangleModel(Integer.parseInt(str[2]), Integer.parseInt(str[3]), str[1]);
+                        Rectangle rect = new Rectangle(rectangleModel);
+                        RectangleController rectangleController = new RectangleController(rect, rectangleModel, drawPanel);
+                        Storage.getInstance().addRectangle(rectangleModel);
+                        drawPanel.add(rect);
+                        drawPanel.repaint();
+                        Storage.getInstance().addRectangle(rectangleModel);
+                    }
+                    else if (line.startsWith("LineCoordinates")) {
+                        String[] str = line.split(",", 6);
+                        LineCoordinates lineCoordinate = new LineCoordinates(Integer.parseInt(str[2]), Integer.parseInt(str[3]),
+                                    Integer.parseInt(str[4]), Integer.parseInt(str[5]),
+                                    str[1]);
+                        Storage.getInstance().addCoordinates(lineCoordinate);
+                        drawPanel.repaint();
                     }
                 }
             }

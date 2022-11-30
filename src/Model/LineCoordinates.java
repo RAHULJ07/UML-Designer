@@ -60,7 +60,7 @@ public class LineCoordinates {
     @Override
     public String toString(){
         String str;
-        str = getArrowType() + "," + getStartX() + "," + getStartY()+ "," + getEndX() + "," + getEndY();
+        str = "LineCoordinates"+","+getArrowType() + "," + getStartX() + "," + getStartY()+ "," + getEndX() + "," + getEndY();
         return str;
     }
 }

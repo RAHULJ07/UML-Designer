@@ -1,7 +1,6 @@
 package Controller;
 
 import View.AppPanel;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

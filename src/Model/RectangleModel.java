@@ -42,7 +42,7 @@ public class RectangleModel {
     @Override
     public String toString(){
         String str;
-        str = className + "," + xPos + "," + yPos;
+        str = "Rectangles"+","+className + "," + xPos + "," + yPos;
         return str;
     }
 }
