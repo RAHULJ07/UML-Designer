@@ -1,5 +1,6 @@
 package Controller;
 
+import View.DrawPanel;
 import View.Rectangle;
 import Model.*;
 import javax.swing.event.MouseInputListener;
@@ -10,24 +11,60 @@ public class RectangleController implements MouseInputListener {
 
     Rectangle rectangle;
 
-    public RectangleController(Rectangle rectangle){
+    RectangleModel rectangleModel;
+
+    int preX, preY;
+
+    boolean pressOut = false;
+
+    DrawPanel drawPanel;
+
+    public RectangleController(Rectangle rectangle, RectangleModel model, DrawPanel drawPanel){
+
         this.rectangle = rectangle;
+        this.rectangleModel = model;
+        this.drawPanel = drawPanel;
+        this.rectangle.addMouseListener(this);
+    }
+
+    public int getPreX() {
+        return preX;
+    }
+
+    public void setPreX(int preX) {
+        this.preX = preX;
+    }
+
+    public int getPreY() {
+        return preY;
+    }
+
+    public void setPreY(int preY) {
+        this.preY = preY;
+    }
+
+    public boolean isPressOut() {
+        return pressOut;
+    }
+
+    public void setPressOut(boolean pressOut) {
+        this.pressOut = pressOut;
     }
 
     public void moved(int x, int y){
         for( LineCoordinates coord : Storage.getInstance().getCoordinates()){
-            if((coord.getStartX()== rectangle.getxPos()) && (coord.getStartY()== rectangle.getyPos()))
+            if((coord.getStartX()== rectangleModel.getxPos()) && (coord.getStartY()== rectangleModel.getyPos()))
             {
                 coord.setStartX(x);
                 coord.setStartY(y);
             }
-            else if((coord.getEndX()== rectangle.getxPos()) && (coord.getEndY()== rectangle.getyPos())){
+            else if((coord.getEndX()== rectangleModel.getxPos()) && (coord.getEndY()== rectangleModel.getyPos())){
                 coord.setEndX(x);
                 coord.setEndY(y);
             }
         }
-        rectangle.setxPos(x);
-        rectangle.setyPos(y);
+        rectangleModel.setxPos(x);
+        rectangleModel.setyPos(y);
         rectangle.setLocation(x, y);
     }
 
@@ -38,23 +75,23 @@ public class RectangleController implements MouseInputListener {
     }
 
     public void clickEmulator() {
-        rectangle.getDrawPanel().getDrawPanelController().boxClickTracker(rectangle);
+        drawPanel.boxClickTracker(rectangle);
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        rectangle.setPreX(rectangle.getxPos()- e.getX());
-        rectangle.setPreY(rectangle.getyPos() - e.getY());
-        moved(rectangle.getPreX()+ e.getX(), rectangle.getPreY()+ e.getY());
+        setPreX(rectangleModel.getxPos()- e.getX());
+        setPreY(rectangleModel.getyPos() - e.getY());
+        moved(getPreX()+ e.getX(), getPreY()+ e.getY());
         rectangle.repaint();
-        rectangle.getDrawPanel().repaint();
+        drawPanel.repaint();
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        moved(rectangle.getPreX()+ e.getX(), rectangle.getPreY()+ e.getY());
+        moved(getPreX()+ e.getX(), getPreY()+ e.getY());
         rectangle.repaint();
-        rectangle.getDrawPanel().repaint();
+        drawPanel.repaint();
     }
 
     @Override
@@ -69,10 +106,10 @@ public class RectangleController implements MouseInputListener {
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        if(!rectangle.isPressOut()){
-            moved(rectangle.getPreX()+ e.getX(), rectangle.getPreY()+ e.getY());
+        if(!isPressOut()){
+            moved(getPreX()+ e.getX(), getPreY()+ e.getY());
             rectangle.repaint();
-            rectangle.getDrawPanel().repaint();
+            drawPanel.repaint();
         }
     }
 

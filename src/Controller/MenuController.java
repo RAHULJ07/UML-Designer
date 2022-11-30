@@ -1,20 +1,32 @@
 package Controller;
 
+import View.MenuView;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Controller implements ActionListener {
+public class MenuController implements ActionListener {
     IHandler newOpHandler;
     IHandler saveOpHandler;
     IHandler loadOpHandler;
 
-    public Controller(){
+    MenuView menuView;
+
+    public MenuController(MenuView menuView){
+        this.menuView = menuView;
         newOpHandler = new NewOperationHandler();
         saveOpHandler = new SaveOperationHandler();
         loadOpHandler = new LoadOperationHandler();
 
         ((NewOperationHandler)newOpHandler).setSuccessor(saveOpHandler);
         ((SaveOperationHandler)saveOpHandler).setSuccessor(loadOpHandler);
+
+        menuView.getNewButton().addActionListener(this);
+        menuView.getSaveButton().addActionListener(this);
+        menuView.getLoadButton().addActionListener(this);
+        menuView.getComposition().addActionListener(this);
+        menuView.getAggregation().addActionListener(this);
+        menuView.getInheritance().addActionListener(this);
     }
 
     @Override

@@ -27,7 +27,7 @@ public class SaveOperationHandler implements IHandler {
                     FileWriter writer = new FileWriter(fileName);
                     writer.write("Rectangles" + System.lineSeparator());
                     String str;
-                    for (Rectangle rectangle : storage.getRectangles()) {
+                    for (RectangleModel rectangle : storage.getRectangles()) {
                         str = rectangle.toString();
                         writer.write(str + System.lineSeparator());
                     }

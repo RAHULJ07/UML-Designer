@@ -25,14 +25,21 @@ public class LoadOperationHandler implements IHandler {
                 } catch (FileNotFoundException e) {
                     throw new RuntimeException(e);
                 }
+
+                DrawPanel drawPanel = MainController.getInstance().getAppPanelController().getDrawPanelController().getDrawPanel();
                 while (scanner.hasNextLine()) {
                     String line = scanner.nextLine();
                     if (line.startsWith("Rectangles")) {
                         while (scanner.hasNextLine()) {
                             line = scanner.nextLine();
                             String[] str = line.split(",", 3);
-                            Rectangle rect = new Rectangle(Integer.parseInt(str[1]), Integer.parseInt(str[2]), str[0], new DrawPanel());
-                            Storage.getInstance().addRectangle(rect);
+                            RectangleModel rectangleModel = new RectangleModel(Integer.parseInt(str[1]), Integer.parseInt(str[2]), str[0]);
+                            Rectangle rect = new Rectangle(rectangleModel);
+                            RectangleController rectangleController = new RectangleController(rect, rectangleModel, drawPanel);
+                            Storage.getInstance().addRectangle(rectangleModel);
+                            drawPanel.add(rect);
+                            drawPanel.repaint();
+                            Storage.getInstance().addRectangle(rectangleModel);
                         }
                     } else if (line.startsWith("LineCoordinates")) {
                         while (scanner.hasNextLine()) {

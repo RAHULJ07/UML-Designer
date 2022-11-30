@@ -9,7 +9,7 @@ public class Storage implements Observable {
 
     protected static Storage instance;
 
-    private ArrayList<Rectangle> rectangles;
+    private ArrayList<RectangleModel> rectangles;
 
     private ArrayList<LineCoordinates> coordinates;
     private List<Observer> observerList;
@@ -43,7 +43,7 @@ public class Storage implements Observable {
         return coordinates;
     }
 
-    public ArrayList<Rectangle> getRectangles() {
+    public ArrayList<RectangleModel> getRectangles() {
         return rectangles;
     }
 
@@ -52,11 +52,11 @@ public class Storage implements Observable {
         coordinates.add(coord);
     }
 
-    public void addRectangles(Rectangle rectangle) {
+    public void addRectangles(RectangleModel rectangle) {
         rectangles.add(rectangle);
     }
 
-    public void addRectangle(Rectangle rect) {
+    public void addRectangle(RectangleModel rect) {
         rectangles.add(rect);
         updateObserver(rect.getClassName());
     }
