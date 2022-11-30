@@ -1,18 +1,27 @@
 package Controller;
 
 import View.AppPanel;
-import View.MenuView;
 
-public class MainController {
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class MainController implements ActionListener {
 
     protected static MainController instance;
 
-    private MenuController menuController;
     private AppPanelController appPanelController;
+    IHandler newOpHandler;
+    IHandler saveOpHandler;
+    IHandler loadOpHandler;
 
     private MainController(){
-        menuController = new MenuController(new MenuView());
         appPanelController = new AppPanelController(new AppPanel());
+        newOpHandler = new NewOperationHandler();
+        saveOpHandler = new SaveOperationHandler();
+        loadOpHandler = new LoadOperationHandler();
+
+        ((NewOperationHandler)newOpHandler).setSuccessor(saveOpHandler);
+        ((SaveOperationHandler)saveOpHandler).setSuccessor(loadOpHandler);
     }
 
     public static MainController getInstance(){
@@ -21,8 +30,29 @@ public class MainController {
         return instance;
     }
 
-    public MenuController getMenuController() {
-        return menuController;
+    @Override
+    public void actionPerformed(ActionEvent e){
+
+        String action = e.getActionCommand();
+
+        if(action.equals("Composition")){
+            ArrowType.arrowType = "Composition";
+        }
+        else if(action.equals("Aggregation")){
+            ArrowType.arrowType = "Aggregation";
+        }
+        else if(action.equals("Inheritance")){
+            ArrowType.arrowType = "Inheritance";
+        }
+        else if(action.equals("New")){
+            newOpHandler.handleRequest(RequestType.New);
+        }
+        else if(action.equals("Save")){
+            saveOpHandler.handleRequest(RequestType.Save);
+        }else if(action.equals("Load")){
+            loadOpHandler.handleRequest(RequestType.Load);
+        }
+
     }
 
     public AppPanelController getAppPanelController() {
