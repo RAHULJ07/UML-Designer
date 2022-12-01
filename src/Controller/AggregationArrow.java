@@ -1,6 +1,11 @@
+package Controller;
+
+import Model.LineCoordinates;
+import View.StatusBar;
+
 import java.awt.*;
 
-public class AggregationArrow extends Decorator{
+public class AggregationArrow extends Decorator {
 
     private LineCoordinates coord;
     private int x1, y1, x2, y2;

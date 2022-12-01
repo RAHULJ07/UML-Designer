@@ -1,9 +1,10 @@
+import Controller.*;
+import View.StatusBar;
 import java.awt.BorderLayout;
 import javax.swing.*;
-import java.awt.event.*;
 
-public class Main extends JFrame implements ActionListener{
-    AppPanel appPanel;
+public class Main extends JFrame{
+
     JMenuBar menuBar = new JMenuBar();
     JMenu fileMenu = new JMenu("File");
     JMenu helpMenu = new JMenu("Help");
@@ -16,28 +17,33 @@ public class Main extends JFrame implements ActionListener{
     JRadioButtonMenuItem aggregation = new JRadioButtonMenuItem("Aggregation");
     JRadioButtonMenuItem inheritance = new JRadioButtonMenuItem("Inheritance");
     ButtonGroup group = new ButtonGroup();
-
     static StatusBar status = StatusBar.getStatus();
 
+
     public Main(){
-        appPanel = new AppPanel();
+        MainController mainController = MainController.getInstance();
         setLayout(new BorderLayout(3, 2));
-        getContentPane().add(appPanel);
+        getContentPane().add(mainController.getAppPanelController().getAppPanel());
         getContentPane().add(status, java.awt.BorderLayout.SOUTH);
         fileMenu.add(newButton);
         fileMenu.add(saveButton);
         fileMenu.add(loadButton);
         menuBar.add(fileMenu);
         menuBar.add(helpMenu);
+        newButton.addActionListener(mainController);
+        saveButton.addActionListener(mainController);
+        loadButton.addActionListener(mainController);
         group.add(composition);
         relationship.add(composition);
         group.add(aggregation);
         relationship.add(aggregation);
         group.add(inheritance);
         relationship.add(inheritance);
-        composition.addActionListener(this);
-        aggregation.addActionListener(this);
-        inheritance.addActionListener(this);
+        composition.addActionListener(mainController);
+        composition.setSelected(true);
+        ArrowType.setArrowType("Composition");
+        aggregation.addActionListener(mainController);
+        inheritance.addActionListener(mainController);
         menuBar.add(relationship);
         setJMenuBar(menuBar);
         setSize(1000, 1000);
@@ -45,22 +51,9 @@ public class Main extends JFrame implements ActionListener{
         setLocationRelativeTo(null);
         setVisible(true);
     }
+
     public static void main(String[] args) {
         JFrame main = new Main();
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e){
-
-        if(e.getSource() == composition){
-            ArrowType.arrowType = "Composition";
-        }
-        else if(e.getSource() == aggregation){
-            ArrowType.arrowType = "Aggregation";
-        }
-        else if(e.getSource() == inheritance){
-            ArrowType.arrowType = "Inheritance";
-        }
-
-    }
 }

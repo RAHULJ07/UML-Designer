@@ -1,3 +1,5 @@
+package Controller;
+
 import java.awt.*;
 
 public interface IArrow {
