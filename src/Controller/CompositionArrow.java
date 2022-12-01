@@ -10,9 +10,7 @@ public class CompositionArrow extends Decorator {
     private LineCoordinates coord;
     private int x1, y1, x2, y2;
 
-    public CompositionArrow(LineCoordinates coord) {
-        this.coord = coord;
-    }
+    public CompositionArrow(LineCoordinates coord) {this.coord = coord;}
 
     @Override
     public void draw(Graphics2D g2d) {
@@ -21,7 +19,6 @@ public class CompositionArrow extends Decorator {
         y1 = coord.getStartY();
         x2 = coord.getEndX();
         y2 = coord.getEndY();
-        StatusBar.getStatus().setStatus(String.format("Drawing Composition from (%d, %d) to (%d, %d).", x1, y1, x2, y2));
         double d = 10;
         double h = 15;
         int dx = x2 - x1, dy = y2 - y1;
