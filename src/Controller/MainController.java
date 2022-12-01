@@ -37,8 +37,8 @@ public class MainController implements ActionListener {
         if(action.equals("Composition")){
             ArrowType.arrowType = "Composition";
         }
-        else if(action.equals("Aggregation")){
-            ArrowType.arrowType = "Aggregation";
+        else if(action.equals("Association")){
+            ArrowType.arrowType = "Association";
         }
         else if(action.equals("Inheritance")){
             ArrowType.arrowType = "Inheritance";
