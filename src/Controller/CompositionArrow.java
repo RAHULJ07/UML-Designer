@@ -9,9 +9,12 @@ public class CompositionArrow extends Decorator {
 
     private LineCoordinates coord;
     private int x1, y1, x2, y2;
+    private String[] rectClasses;
 
-    public CompositionArrow(LineCoordinates coord) {
+    public CompositionArrow(LineCoordinates coord, String[] rectClasses) {
+
         this.coord = coord;
+        this.rectClasses = rectClasses;
     }
 
     @Override
@@ -21,7 +24,7 @@ public class CompositionArrow extends Decorator {
         y1 = coord.getStartY();
         x2 = coord.getEndX();
         y2 = coord.getEndY();
-        StatusBar.getStatus().setStatus(String.format("Drawing Composition from (%d, %d) to (%d, %d).", x1, y1, x2, y2));
+        //StatusBar.getStatus().setStatus(String.format("Drawing Composition from %s to %s.", rectClasses[0], rectClasses[1]));
         double d = 10;
         double h = 15;
         int dx = x2 - x1, dy = y2 - y1;

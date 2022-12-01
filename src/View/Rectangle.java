@@ -9,7 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Rectangle extends JPanel {
-
+   public String rectClassName;
 
    public Rectangle(RectangleModel model) {
       this.setLayout(new GridBagLayout());
@@ -19,6 +19,8 @@ public class Rectangle extends JPanel {
       JLabel label = new JLabel(model.getClassName());
       this.add(label);
       this.setBackground(Color.YELLOW);
+
+      this.rectClassName = model.getClassName();
    }
 
 
