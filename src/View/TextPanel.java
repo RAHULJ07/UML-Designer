@@ -45,7 +45,7 @@ public class TextPanel extends Observer {
                 if(arrow.getArrowType().equals("Inheritance") && (arrow.getStartX()==rectangle.getxPos() && arrow.getStartY()==rectangle.getyPos())){
                     inheritanceClasses.add(storage.getRectangleAt(arrow.getEndX(), arrow.getEndY()));
                 }
-                else if(arrow.getArrowType().equals("Aggregation") && (arrow.getStartX()==rectangle.getxPos() && arrow.getStartY()==rectangle.getyPos())){
+                else if(arrow.getArrowType().equals("Association") && (arrow.getStartX()==rectangle.getxPos() && arrow.getStartY()==rectangle.getyPos())){
                     associationClasses.add(storage.getRectangleAt(arrow.getEndX(), arrow.getEndY()));
                 }
                 else if(arrow.getArrowType().equals("Composition") && (arrow.getStartX()==rectangle.getxPos() && arrow.getStartY()==rectangle.getyPos())){
