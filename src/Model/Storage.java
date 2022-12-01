@@ -10,7 +10,6 @@ public class Storage implements Observable {
     protected static Storage instance;
 
     private ArrayList<RectangleModel> rectangles;
-
     private ArrayList<LineCoordinates> coordinates;
     private List<Observer> observerList;
 
@@ -32,9 +31,9 @@ public class Storage implements Observable {
     }
 
     @Override
-    public void updateObserver(String className){
+    public void updateObserver(){
         for (Observer observer : observerList) {
-            observer.update(className);
+            observer.update();
 
         }
     }
@@ -58,11 +57,27 @@ public class Storage implements Observable {
 
     public void addRectangle(RectangleModel rect) {
         rectangles.add(rect);
-        updateObserver(rect.getClassName());
+        StatusBar.getStatus().setStatus(String.format("Creating class: %s", rect.getClassName()));
+        //updateObserver(rect.getClassName());
+    }
+
+    public void loadRectangle(RectangleModel rect) {
+        rectangles.add(rect);
+        updateObserver();
+    }
+
+    public String getRectangleAt(int x, int y){
+        for(RectangleModel rectangle: getRectangles()){
+            if(x==rectangle.getxPos() && y==rectangle.getyPos()){
+                return rectangle.getClassName();
+            }
+        }
+        return "";
     }
 
     public void addLineCoordinate(LineCoordinates lineCoordinate) {
         coordinates.add(lineCoordinate);
-        //updateObserver("Dummy");
+        updateObserver();
+        StatusBar.getStatus().setStatus(String.format("Creating relation: %s", lineCoordinate.getArrowType()));
     }
 }

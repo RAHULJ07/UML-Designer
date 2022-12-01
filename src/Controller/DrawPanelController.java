@@ -41,7 +41,7 @@ public class DrawPanelController implements MouseListener, MouseMotionListener {
             RectangleModel rectangleModel = new RectangleModel(x, y, className);
             Rectangle rect = new Rectangle(rectangleModel);
             RectangleController rectangleController = new RectangleController(rect, rectangleModel, drawPanel);
-            Storage.getInstance().addRectangle(rectangleModel);
+            Storage.getInstance().loadRectangle(rectangleModel);
             drawPanel.add(rect);
             drawPanel.repaint();
         }
