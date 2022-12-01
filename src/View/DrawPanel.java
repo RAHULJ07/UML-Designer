@@ -54,14 +54,22 @@ public class DrawPanel extends JPanel {
                 aType = coord.getArrowType();
                 line = new Line(coord);
                 if (aType.equals("Composition")) {
-                    compositionArrow = new CompositionArrow(coord, rectClasses);
+                    compositionArrow = new CompositionArrow(coord);
                     compositionArrow.add(line);
                     compositionArrow.draw(g2);
+
+                    if (rectClasses[0] != null) {
+                        StatusBar.getStatus().setStatus(String.format("Drawing Composition from %s to %s.", rectClasses[0], rectClasses[1]));
+                    }
 
                 } else if (aType.equals("Aggregation")) {
                     aggregationArrow = new AggregationArrow(coord);
                     aggregationArrow.add(line);
                     aggregationArrow.draw(g2);
+
+                    if (rectClasses[0] != null) {
+                        StatusBar.getStatus().setStatus(String.format("Drawing Aggregation from %s to %s.", rectClasses[0], rectClasses[1]));
+                    }
 
 
                 } else if (aType.equals("Inheritance")) {
@@ -69,6 +77,9 @@ public class DrawPanel extends JPanel {
                     inheritanceArrow.add(line);
                     inheritanceArrow.draw(g2);
 
+                    if (rectClasses[0] != null) {
+                        StatusBar.getStatus().setStatus(String.format("Drawing Inheritance from %s to %s.", rectClasses[0], rectClasses[1]));
+                    }
                 }
             }
         }
