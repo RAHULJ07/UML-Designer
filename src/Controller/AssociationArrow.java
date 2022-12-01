@@ -1,16 +1,15 @@
 package Controller;
 
 import Model.LineCoordinates;
-import View.StatusBar;
 
 import java.awt.*;
 
-public class AggregationArrow extends Decorator {
+public class AssociationArrow extends Decorator {
 
     private LineCoordinates coord;
     private int x1, y1, x2, y2;
 
-    public AggregationArrow(LineCoordinates coord) {
+    public AssociationArrow(LineCoordinates coord) {
         this.coord = coord;
     }
 
@@ -42,14 +41,10 @@ public class AggregationArrow extends Decorator {
         double x5 = (1-t1) * x2 + t1 * x1;
         double y5 = (1-t1) * y2 + t1 * y1;
 
-        int[] xPoints = {x2, (int) x3, (int) x5, (int) x4};
-        int[] yPoints = {y2, (int) y3, (int) y5, (int) y4};
 
-
-        g2d.setColor(Color.getHSBColor(184, 172, 232));
-        g2d.fillPolygon(xPoints, yPoints, 4);
         g2d.setColor(Color.BLUE);
-        g2d.drawPolygon(xPoints, yPoints, 4);
+        g2d.drawLine(x2,y2, (int) x3, (int) y3);
+        g2d.drawLine(x2,y2, (int) x4, (int) y4);
 
 
 

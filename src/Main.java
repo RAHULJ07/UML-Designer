@@ -14,7 +14,7 @@ public class Main extends JFrame{
     JMenuItem loadButton = new JMenuItem("Load");
 
     JRadioButtonMenuItem composition = new JRadioButtonMenuItem("Composition");
-    JRadioButtonMenuItem aggregation = new JRadioButtonMenuItem("Aggregation");
+    JRadioButtonMenuItem association = new JRadioButtonMenuItem("Association");
     JRadioButtonMenuItem inheritance = new JRadioButtonMenuItem("Inheritance");
     ButtonGroup group = new ButtonGroup();
     static StatusBar status = StatusBar.getStatus();
@@ -35,14 +35,14 @@ public class Main extends JFrame{
         loadButton.addActionListener(mainController);
         group.add(composition);
         relationship.add(composition);
-        group.add(aggregation);
-        relationship.add(aggregation);
+        group.add(association);
+        relationship.add(association);
         group.add(inheritance);
         relationship.add(inheritance);
         composition.addActionListener(mainController);
         composition.setSelected(true);
         ArrowType.setArrowType("Composition");
-        aggregation.addActionListener(mainController);
+        association.addActionListener(mainController);
         inheritance.addActionListener(mainController);
         menuBar.add(relationship);
         setJMenuBar(menuBar);

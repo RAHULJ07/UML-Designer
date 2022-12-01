@@ -32,7 +32,7 @@ public class DrawPanel extends JPanel {
         Line line;
         InheritanceArrow inheritanceArrow;
         CompositionArrow compositionArrow;
-        AggregationArrow aggregationArrow;
+        AssociationArrow associationArrow;
 
         LineCoordinates coordinate;
 
@@ -62,13 +62,13 @@ public class DrawPanel extends JPanel {
                         StatusBar.getStatus().setStatus(String.format("Drawing Composition from %s to %s.", rectClasses[0], rectClasses[1]));
                     }
 
-                } else if (aType.equals("Aggregation")) {
-                    aggregationArrow = new AggregationArrow(coord);
-                    aggregationArrow.add(line);
-                    aggregationArrow.draw(g2);
+                } else if (aType.equals("Association")) {
+                    associationArrow = new AssociationArrow(coord);
+                    associationArrow.add(line);
+                    associationArrow.draw(g2);
 
                     if (rectClasses[0] != null) {
-                        StatusBar.getStatus().setStatus(String.format("Drawing Aggregation from %s to %s.", rectClasses[0], rectClasses[1]));
+                        StatusBar.getStatus().setStatus(String.format("Drawing Association from %s to %s.", rectClasses[0], rectClasses[1]));
                     }
 
 
