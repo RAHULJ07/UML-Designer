@@ -37,7 +37,6 @@ public class LoadOperationHandler implements IHandler {
                         Storage.getInstance().addRectangle(rectangleModel);
                         drawPanel.add(rect);
                         drawPanel.repaint();
-                        Storage.getInstance().addRectangle(rectangleModel);
                     }
                     else if (line.startsWith("LineCoordinates")) {
                         String[] str = line.split(",", 6);
@@ -48,6 +47,7 @@ public class LoadOperationHandler implements IHandler {
                         drawPanel.repaint();
                     }
                 }
+                storage.updateObserver();
             }
         }
     }

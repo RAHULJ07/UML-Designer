@@ -16,8 +16,5 @@ public class Line implements IArrow {
     public void draw(Graphics2D g2d) {
             g2d.setColor(Color.BLUE);
             g2d.drawLine(coord.getStartX(),coord.getStartY(),coord.getEndX(),coord.getEndY());
-
-
-
     }
 }
