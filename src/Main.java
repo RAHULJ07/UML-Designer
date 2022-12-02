@@ -12,7 +12,12 @@ public class Main extends JFrame{
     JMenuItem newButton = new JMenuItem("New");
     JMenuItem saveButton = new JMenuItem("Save");
     JMenuItem loadButton = new JMenuItem("Load");
-
+    JLabel mem1 = new JLabel("Bhavana Priya");
+    JLabel mem2 = new JLabel("Cameron Woehler");
+    JLabel mem3 = new JLabel("Chris Lazar");
+    JLabel mem4 = new JLabel("Haritej Lakshmi Narayan");
+    JLabel mem5 = new JLabel("Rahul Kumar");
+    JLabel mem6 = new JLabel("Sunayana Gupta"); 
     JRadioButtonMenuItem composition = new JRadioButtonMenuItem("Composition");
     JRadioButtonMenuItem association = new JRadioButtonMenuItem("Association");
     JRadioButtonMenuItem inheritance = new JRadioButtonMenuItem("Inheritance");
@@ -30,6 +35,12 @@ public class Main extends JFrame{
         fileMenu.add(loadButton);
         menuBar.add(fileMenu);
         menuBar.add(helpMenu);
+        helpMenu.add(mem1);
+        helpMenu.add(mem2);
+        helpMenu.add(mem3);
+        helpMenu.add(mem4);
+        helpMenu.add(mem5);
+        helpMenu.add(mem6);
         newButton.addActionListener(mainController);
         saveButton.addActionListener(mainController);
         loadButton.addActionListener(mainController);
