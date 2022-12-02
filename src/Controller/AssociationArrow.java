@@ -1,18 +1,26 @@
 package Controller;
 
 import Model.LineCoordinates;
-
 import java.awt.*;
 
+/**
+ * AssociationArrow is a decorator(arrowhead) for the Line class. It is an extension of the Decorator class.
+ * @author Haritej Lakshmi Narayan, Chris Lazar, Sunayana Gupta, Rahul Kumar, Cameron Woehler, Bhavana Priya Kanumuri
+ */
 public class AssociationArrow extends Decorator {
-
     private LineCoordinates coord;
     private int x1, y1, x2, y2;
-
+    /**
+     * Initializes the line co-ordinates for attaching the association arrowhead
+     * @param coord the x and y co-ordinates of the line
+     */
     public AssociationArrow(LineCoordinates coord) {
         this.coord = coord;
     }
-
+    /**
+     * draw(Graphics2D g2d) draws the arrowhead for association relationship
+     * @param g2d graphical representation of association with a pointed arrow shape
+     */
     @Override
     public void draw(Graphics2D g2d) {
         super.draw(g2d);
@@ -41,12 +49,8 @@ public class AssociationArrow extends Decorator {
         double x5 = (1-t1) * x2 + t1 * x1;
         double y5 = (1-t1) * y2 + t1 * y1;
 
-
         g2d.setColor(Color.BLUE);
         g2d.drawLine(x2,y2, (int) x3, (int) y3);
         g2d.drawLine(x2,y2, (int) x4, (int) y4);
-
-
-
     }
 }

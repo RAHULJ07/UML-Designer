@@ -5,13 +5,23 @@ import View.StatusBar;
 
 import java.awt.*;
 
+/**
+ * CompositionArrow is a decorator(arrowhead) for the Line class. It is an extension of the Decorator class.
+ * @author Haritej Lakshmi Narayan, Chris Lazar, Sunayana Gupta, Rahul Kumar, Cameron Woehler, Bhavana Priya Kanumuri *
+ */
 public class CompositionArrow extends Decorator {
-
     private LineCoordinates coord;
     private int x1, y1, x2, y2;
-
+    /**
+     * Initializes the line co-ordinates for attaching the composition arrowhead
+     * @param coord the x and y co-ordinates of the line
+     */
     public CompositionArrow(LineCoordinates coord) {this.coord = coord;}
 
+    /**
+     * draw(Graphics2D g2d) draws the arrowhead for composition relationship
+     * @param g2d graphical representation of composition with a black diamond shape
+     */
     @Override
     public void draw(Graphics2D g2d) {
         super.draw(g2d);
