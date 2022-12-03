@@ -2,12 +2,15 @@ package Model;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import View.*;
 
 /**
  * Storage model that saves classes, lines and observers. The Storage class realizes the observable.
  * Storage class is also a singleton class.
+ */
+/**
+ * Storage class is the representation of Blackboard
+ * @author Haritej Lakshmi Narayan, Chris Lazar, Sunayana Gupta, Rahul Kumar, Cameron Woehler, Bhavana Priya Kanumuri
  */
 public class Storage implements Observable {
 
@@ -29,6 +32,10 @@ public class Storage implements Observable {
     /**
      * used to return an instance of the class if present or else create a new instance of the Storage class
      * @return new instance of storage class
+     */
+    /**
+     * Singleton instance
+     * @return
      */
     public static Storage getInstance(){
         if(instance == null)
@@ -86,7 +93,6 @@ public class Storage implements Observable {
     public void addRectangle(RectangleModel rect) {
         rectangles.add(rect);
         StatusBar.getStatus().setStatus(String.format("Creating class: %s", rect.getClassName()));
-        //updateObserver(rect.getClassName());
     }
 
     /**
@@ -113,6 +119,10 @@ public class Storage implements Observable {
         return "";
     }
 
+    /**
+     * add LineCoordinate to coordinates list
+     * @param lineCoordinate
+     */
     public void addLineCoordinate(LineCoordinates lineCoordinate) {
         coordinates.add(lineCoordinate);
         updateObserver();

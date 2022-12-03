@@ -4,12 +4,12 @@ import View.DrawPanel;
 import View.Rectangle;
 import Model.*;
 import javax.swing.event.MouseInputListener;
-import java.awt.*;
 import java.awt.event.MouseEvent;
 
 /**
- * Controller for rectangle box created on class creation. RectangleController realizes the MouseInputListener
- * @author Haritej Lakshmi Narayan, Chris Lazar, Sunayana Gupta, Rahul Kumar, Cameron Woehler, Bhavana Priya Kanumuri
+ * RectangleController controls the creating and modification of the rectangle to draw classes.
+ * RectangleController realizes from MouseInputListener.
+ * @author Haritej Lakshmi Narayan, Chris Lazar, Sunayana Gupta, Rahul Kumar, Cameron Woehler, Bhavana Priya Kanumur
  */
 public class RectangleController implements MouseInputListener {
 

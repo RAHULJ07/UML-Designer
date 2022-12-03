@@ -1,9 +1,7 @@
 package Model;
 
-import View.DrawPanel;
-
 /**
- * Model for the rectangle box created for new class
+ * RectangleModel class is a Model class representing data in rectangle
  * @author Haritej Lakshmi Narayan, Chris Lazar, Sunayana Gupta, Rahul Kumar, Cameron Woehler, Bhavana Priya Kanumuri
  */
 public class RectangleModel {

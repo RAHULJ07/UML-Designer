@@ -1,8 +1,6 @@
 package Controller;
 
 import Model.LineCoordinates;
-import View.StatusBar;
-
 import java.awt.*;
 
 /**
@@ -20,6 +18,7 @@ public class InheritanceArrow extends Decorator{
     public InheritanceArrow(LineCoordinates coord) {
         this.coord = coord;
     }
+
     /**
      * draw(Graphics2D g2d) draws the arrowhead for inheritance relationship
      * @param g2d graphical representation of inheritance with a pointed triangle shape
