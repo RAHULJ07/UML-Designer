@@ -1,11 +1,17 @@
 package Controller;
 
 import Model.Storage;
-import View.DrawPanel;
-import View.TextPanel;
+import View.*;
 
+/**
+ * CloseOperation is an abstract class to promote code reusability for handlers.
+ * @author Haritej Lakshmi Narayan, Chris Lazar, Sunayana Gupta, Rahul Kumar, Cameron Woehler, Bhavana Priya Kanumuri
+ */
 public abstract class CloseOperation {
 
+    /**
+     * close and clear objects
+     */
     public void close(){
         Storage storage = Storage.getInstance();
         storage.getCoordinates().removeAll(storage.getCoordinates());

@@ -4,6 +4,10 @@ import View.AppPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Controller for Main and listens to Action.
+ * @author Haritej Lakshmi Narayan, Chris Lazar, Sunayana Gupta, Rahul Kumar, Cameron Woehler, Bhavana Priya Kanumur
+ */
 public class MainController implements ActionListener {
 
     protected static MainController instance;
@@ -16,6 +20,9 @@ public class MainController implements ActionListener {
     IHandlerAction saveOpHandler;
     IHandlerAction loadOpHandler;
 
+    /**
+     * private constructor.
+     */
     private MainController(){
         appPanelController = new AppPanelController(new AppPanel());
         newOpHandler = new NewOperationHandler();
@@ -33,12 +40,20 @@ public class MainController implements ActionListener {
         ((SaveOperationHandler)saveOpHandler).setSuccessor(loadOpHandler);
     }
 
+    /**
+     * singleton instance of class.
+     * @return
+     */
     public static MainController getInstance(){
         if(instance == null)
             instance = new MainController();
         return instance;
     }
 
+    /**
+     * passing action to handler.
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e){
 
@@ -46,6 +61,10 @@ public class MainController implements ActionListener {
         compositionHandler.handleRequest(action);
     }
 
+    /**
+     * get AppPanel controller
+     * @return AppPanelController
+     */
     public AppPanelController getAppPanelController() {
         return appPanelController;
     }
