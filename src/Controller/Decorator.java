@@ -1,14 +1,12 @@
 package Controller;
 
 import java.awt.*;
-
 /**
  *Decorator class realizes from IArrow class
  * @author Haritej Lakshmi Narayan, Chris Lazar, Sunayana Gupta, Rahul Kumar, Cameron Woehler, Bhavana Priya Kanumuri
  */
 public class Decorator implements IArrow{
     protected IArrow iArrow;
-
     /**
      * Initializing iArrow
      * @param iArrow

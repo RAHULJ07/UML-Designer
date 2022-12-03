@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.LineCoordinates;
+
 import java.awt.*;
 
 /**

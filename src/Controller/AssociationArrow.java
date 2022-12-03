@@ -10,7 +10,6 @@ import java.awt.*;
 public class AssociationArrow extends Decorator {
     private LineCoordinates coord;
     private int x1, y1, x2, y2;
-
     /**
      * Initializes the line co-ordinates for attaching the association arrowhead
      * @param coord the x and y co-ordinates of the line
@@ -18,7 +17,6 @@ public class AssociationArrow extends Decorator {
     public AssociationArrow(LineCoordinates coord) {
         this.coord = coord;
     }
-
     /**
      * draw(Graphics2D g2d) draws the arrowhead for association relationship
      * @param g2d graphical representation of association with a pointed arrow shape

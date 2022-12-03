@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.LineCoordinates;
+import View.StatusBar;
 
 import java.awt.*;
 
@@ -11,7 +12,6 @@ import java.awt.*;
 public class CompositionArrow extends Decorator {
     private LineCoordinates coord;
     private int x1, y1, x2, y2;
-
     /**
      * Initializes the line co-ordinates for attaching the composition arrowhead
      * @param coord the x and y co-ordinates of the line

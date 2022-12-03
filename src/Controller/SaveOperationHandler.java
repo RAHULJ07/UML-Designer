@@ -27,8 +27,8 @@ public class SaveOperationHandler implements IHandler {
      * @param type of the request- 'Save'
      */
     @Override
-    public void handleRequest(String action) {
-        if(action.equals("Save")){
+    public void handleRequest(RequestType type) {
+        if(type == RequestType.Save){
             String fileName;
             JFileChooser fileChooser = new JFileChooser();
             int response = fileChooser.showSaveDialog(null);
@@ -52,7 +52,7 @@ public class SaveOperationHandler implements IHandler {
                 }
             }
         }else if(successor != null){
-            successor.handleRequest(action);
+            successor.handleRequest(type);
         }
     }
 }

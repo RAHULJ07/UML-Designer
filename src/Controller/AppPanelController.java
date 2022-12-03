@@ -8,7 +8,6 @@ import View.AppPanel;
 public class AppPanelController {
     DrawPanelController drawPanelController;
     private AppPanel appPanel;
-
     /**
      * AppPanelController gets and initializes appPanel and DrawPanelController
      * @param appPanel
@@ -17,7 +16,6 @@ public class AppPanelController {
         this.appPanel = appPanel;
         drawPanelController = new DrawPanelController(appPanel.getDrawPanel());
     }
-
     /**
      * Getter method that returns the application panel
      * @return returns the application panel which contains DrawPanel and TextPanel
@@ -25,7 +23,6 @@ public class AppPanelController {
     public AppPanel getAppPanel() {
         return appPanel;
     }
-
     /**
      * Getter method that returns the DrawPanelController
      * @return returns the DrawPanelController which controls the creation of the draw panel

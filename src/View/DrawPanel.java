@@ -3,6 +3,7 @@ package View;
 import Controller.*;
 import Model.LineCoordinates;
 import Model.Storage;
+import org.w3c.dom.css.Rect;
 
 import javax.swing.JPanel;
 import java.awt.*;

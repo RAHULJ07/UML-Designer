@@ -1,10 +1,8 @@
 package Controller;
 
-/**
- * NewOperationHandler performs action on click of New operation.
- * @author Haritej Lakshmi Narayan, Chris Lazar, Sunayana Gupta, Rahul Kumar, Cameron Woehler, Bhavana Priya Kanumur
- */
-public class NewOperationHandler  extends CloseOperation implements IHandlerAction {
+import Model.Storage;
+import View.DrawPanel;
+import View.TextPanel;
 
 /**
  * Request handler when 'New' option is selected by user from menu.
@@ -26,11 +24,18 @@ public class NewOperationHandler implements IHandler {
      * @param type of the request- 'New'
      */
     @Override
-    public void handleRequest(String action) {
-        if(action.equals("New")){
-            super.close();
+    public void handleRequest(RequestType type) {
+        if(type == RequestType.New){
+            Storage storage = Storage.getInstance();
+        	storage.getCoordinates().removeAll(storage.getCoordinates());
+        	storage.getRectangles().removeAll(storage.getRectangles());
+        	DrawPanel drawPanel = MainController.getInstance().getAppPanelController().getDrawPanelController().getDrawPanel();
+        	TextPanel.getTextPanel().update();
+        	drawPanel.removeAll();
+        	drawPanel.updateUI();
         }else if(successor != null){
-            successor.handleRequest(action);
+            successor.handleRequest(type);
         }
+
     }
 }

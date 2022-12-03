@@ -1,9 +1,12 @@
 package Controller;
 
 /**
- * Interface of IHandlerAction which executes on action.
+ * Enum type of requests set to New, Save and Load
  * @author Haritej Lakshmi Narayan, Chris Lazar, Sunayana Gupta, Rahul Kumar, Cameron Woehler, Bhavana Priya Kanumuri
  */
-public interface IHandlerAction {
-    void handleRequest(String action);
+
+public enum RequestType {
+    New,
+    Save,
+    Load
 }

@@ -1,8 +1,7 @@
 package Model;
 
 /**
- * LineCoordinates class is a Model class representing data in LineCoordinate
- * @author Haritej Lakshmi Narayan, Chris Lazar, Sunayana Gupta, Rahul Kumar, Cameron Woehler, Bhavana Priya Kanumuri
+ * Model of the line used to form relationships between two classes
  */
 public class LineCoordinates {
 
@@ -111,6 +110,7 @@ public class LineCoordinates {
     /**
      * @return string with line's arrow type, initial and final x and y coordinates
      */
+
     @Override
     public String toString(){
         String str;

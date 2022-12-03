@@ -2,7 +2,10 @@ package Controller;
 
 import Model.*;
 import View.*;
+import View.Rectangle;
+
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
