@@ -7,15 +7,17 @@ import javax.tools.FileObject;
 import java.io.*;
 import java.util.Scanner;
 
-public class LoadOperationHandler implements IHandler {
+public class LoadOperationHandler extends CloseOperation  implements IHandlerAction {
 
     @Override
-    public void handleRequest(RequestType type) {
-        if(type == RequestType.Load) {
+    public void handleRequest(String action) {
+
+        if(action.equals("Load")) {
             String fileName;
             JFileChooser fileChooser = new JFileChooser();
             int response = fileChooser.showOpenDialog(null);
             if (response == JFileChooser.APPROVE_OPTION) {
+                super.close();
                 fileName = fileChooser.getSelectedFile().getAbsolutePath();
                 Storage storage = Storage.getInstance();
                 File obj = new File(fileName);

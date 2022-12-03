@@ -4,26 +4,20 @@ import Model.Storage;
 import View.DrawPanel;
 import View.TextPanel;
 
-public class NewOperationHandler implements IHandler {
+public class NewOperationHandler  extends CloseOperation implements IHandlerAction {
 
-    protected IHandler successor;
+    protected IHandlerAction successor;
 
-    public void setSuccessor(IHandler successor) {
+    public void setSuccessor(IHandlerAction successor) {
         this.successor = successor;
     }
 
     @Override
-    public void handleRequest(RequestType type) {
-        if(type == RequestType.New){
-            Storage storage = Storage.getInstance();
-        	storage.getCoordinates().removeAll(storage.getCoordinates());
-        	storage.getRectangles().removeAll(storage.getRectangles());
-        	DrawPanel drawPanel = MainController.getInstance().getAppPanelController().getDrawPanelController().getDrawPanel();
-        	TextPanel.getTextPanel().update();
-        	drawPanel.removeAll();
-        	drawPanel.updateUI();
+    public void handleRequest(String action) {
+        if(action.equals("New")){
+            super.close();
         }else if(successor != null){
-            successor.handleRequest(type);
+            successor.handleRequest(action);
         }
 
     }

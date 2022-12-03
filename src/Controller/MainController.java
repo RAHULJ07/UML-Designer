@@ -9,16 +9,26 @@ public class MainController implements ActionListener {
     protected static MainController instance;
 
     private AppPanelController appPanelController;
-    IHandler newOpHandler;
-    IHandler saveOpHandler;
-    IHandler loadOpHandler;
+    IHandlerAction compositionHandler;
+    IHandlerAction associationHandler;
+    IHandlerAction inheritanceHandler;
+    IHandlerAction newOpHandler;
+    IHandlerAction saveOpHandler;
+    IHandlerAction loadOpHandler;
 
     private MainController(){
         appPanelController = new AppPanelController(new AppPanel());
         newOpHandler = new NewOperationHandler();
         saveOpHandler = new SaveOperationHandler();
         loadOpHandler = new LoadOperationHandler();
+        compositionHandler = new CompositionHandler();
+        associationHandler = new AssociationHandler();
+        inheritanceHandler = new InheritanceHandler();
 
+
+        ((CompositionHandler) compositionHandler).setSuccessor(associationHandler);
+        ((AssociationHandler) associationHandler).setSuccessor(inheritanceHandler);
+        ((InheritanceHandler) inheritanceHandler).setSuccessor(newOpHandler);
         ((NewOperationHandler)newOpHandler).setSuccessor(saveOpHandler);
         ((SaveOperationHandler)saveOpHandler).setSuccessor(loadOpHandler);
     }
@@ -33,25 +43,7 @@ public class MainController implements ActionListener {
     public void actionPerformed(ActionEvent e){
 
         String action = e.getActionCommand();
-
-        if(action.equals("Composition")){
-            ArrowType.arrowType = "Composition";
-        }
-        else if(action.equals("Association")){
-            ArrowType.arrowType = "Association";
-        }
-        else if(action.equals("Inheritance")){
-            ArrowType.arrowType = "Inheritance";
-        }
-        else if(action.equals("New")){
-            newOpHandler.handleRequest(RequestType.New);
-        }
-        else if(action.equals("Save")){
-            saveOpHandler.handleRequest(RequestType.Save);
-        }else if(action.equals("Load")){
-            loadOpHandler.handleRequest(RequestType.Load);
-        }
-
+        compositionHandler.handleRequest(action);
     }
 
     public AppPanelController getAppPanelController() {

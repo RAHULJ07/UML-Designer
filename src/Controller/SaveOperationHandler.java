@@ -6,17 +6,17 @@ import javax.swing.*;
 import java.beans.XMLEncoder;
 import java.io.*;
 
-public class SaveOperationHandler implements IHandler {
+public class SaveOperationHandler implements IHandlerAction {
 
-    protected IHandler successor;
+    protected IHandlerAction successor;
 
-    public void setSuccessor(IHandler successor) {
+    public void setSuccessor(IHandlerAction successor) {
         this.successor = successor;
     }
 
     @Override
-    public void handleRequest(RequestType type) {
-        if(type == RequestType.Save){
+    public void handleRequest(String action) {
+        if(action.equals("Save")){
             String fileName;
             JFileChooser fileChooser = new JFileChooser();
             int response = fileChooser.showSaveDialog(null);
@@ -42,7 +42,7 @@ public class SaveOperationHandler implements IHandler {
                 }
             }
         }else if(successor != null){
-            successor.handleRequest(type);
+            successor.handleRequest(action);
         }
 
     }
