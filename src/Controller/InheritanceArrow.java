@@ -14,8 +14,8 @@ public class InheritanceArrow extends Decorator{
     private int x1, y1, x2, y2;
 
     /**
-     * Initializes the line co-ordinates for attaching the  arrowhead
-     * @param coord
+     * Initializes the line co-ordinates for attaching the arrowhead
+     * @param coord the x and y co-ordinates of the line
      */
     public InheritanceArrow(LineCoordinates coord) {
         this.coord = coord;

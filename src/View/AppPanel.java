@@ -8,6 +8,10 @@ import java.awt.Color;
 
 import javax.swing.JLayeredPane;
 
+/**
+ * View of the Application Panel. It inherits from JLayeredPane.
+ * @author Haritej Lakshmi Narayan, Chris Lazar, Sunayana Gupta, Rahul Kumar, Cameron Woehler, Bhavana Priya Kanumuri
+ */
 public class AppPanel extends JLayeredPane{
 
     DrawPanel drawPanel;
@@ -18,6 +22,9 @@ public class AppPanel extends JLayeredPane{
         addPanels();
     }
 
+    /**
+     * adds panels to the basic application panel - text panel and draw panel added.
+     */
     public void addPanels(){
         drawPanel = new DrawPanel();
         drawPanel.setBounds(500,0,500,1000);
@@ -29,10 +36,18 @@ public class AppPanel extends JLayeredPane{
         Storage.getInstance().addObserver(textPanel);
     }
 
+    /**
+     * getter method to get the draw panel
+     * @return draw panel
+     */
     public DrawPanel getDrawPanel() {
         return drawPanel;
     }
 
+    /**
+     * getter method to get the text panel
+     * @return text panel
+     */
     public TextPanel getTextPanel() {
         return textPanel;
     }
