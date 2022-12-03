@@ -4,9 +4,13 @@ import View.DrawPanel;
 import View.Rectangle;
 import Model.*;
 import javax.swing.event.MouseInputListener;
-import java.awt.*;
 import java.awt.event.MouseEvent;
 
+/**
+ * RectangleController controls the creating and modification of the rectangle to draw classes.
+ * RectangleController realizes from MouseInputListener.
+ * @author Haritej Lakshmi Narayan, Chris Lazar, Sunayana Gupta, Rahul Kumar, Cameron Woehler, Bhavana Priya Kanumur
+ */
 public class RectangleController implements MouseInputListener {
 
     Rectangle rectangle;
@@ -19,6 +23,12 @@ public class RectangleController implements MouseInputListener {
 
     DrawPanel drawPanel;
 
+    /**
+     * Constructor for RectangleController
+     * @param rectangle
+     * @param model
+     * @param drawPanel
+     */
     public RectangleController(Rectangle rectangle, RectangleModel model, DrawPanel drawPanel){
 
         this.rectangle = rectangle;
@@ -27,26 +37,50 @@ public class RectangleController implements MouseInputListener {
         this.rectangle.addMouseListener(this);
     }
 
+    /**
+     * get preX
+     * @return
+     */
     public int getPreX() {
         return preX;
     }
 
+    /**
+     * set preX
+     * @return
+     */
     public void setPreX(int preX) {
         this.preX = preX;
     }
 
+    /**
+     * get preY
+     * @return
+     */
     public int getPreY() {
         return preY;
     }
 
+    /**
+     * set preX
+     * @return
+     */
     public void setPreY(int preY) {
         this.preY = preY;
     }
 
+    /**
+     * get pressOut
+     * @return
+     */
     public boolean isPressOut() {
         return pressOut;
     }
 
+    /**
+     * set pressOut
+     * @return
+     */
     public void setPressOut(boolean pressOut) {
         this.pressOut = pressOut;
     }
