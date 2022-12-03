@@ -3,11 +3,8 @@ import View.StatusBar;
 import java.awt.BorderLayout;
 import javax.swing.*;
 
-/**
- * Main class that sets up and launches the GUI application.
- * @author Haritej Lakshmi Narayan, Chris Lazar, Sunayana Gupta, Rahul Kumar, Cameron Woehler, Bhavana Priya Kanumuri
- */
 public class Main extends JFrame{
+
     JMenuBar menuBar = new JMenuBar();
     JMenu fileMenu = new JMenu("File");
     JMenu helpMenu = new JMenu("Help");
@@ -27,9 +24,7 @@ public class Main extends JFrame{
     ButtonGroup group = new ButtonGroup();
     static StatusBar status = StatusBar.getStatus();
 
-    /**
-     * Gets an instance of the main controller and draws the GUI application
-     */
+
     public Main(){
         MainController mainController = MainController.getInstance();
         setLayout(new BorderLayout(3, 2));
@@ -68,9 +63,6 @@ public class Main extends JFrame{
         setVisible(true);
     }
 
-    /**
-     * @param args string of arguments
-     */
     public static void main(String[] args) {
         JFrame main = new Main();
     }

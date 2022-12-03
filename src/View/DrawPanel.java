@@ -9,10 +9,6 @@ import javax.swing.JPanel;
 import java.awt.*;
 import java.util.ArrayList;
 
-/**
- * View for DrawPanel. It inherits from the JPanel class.
- * @author Haritej Lakshmi Narayan, Chris Lazar, Sunayana Gupta, Rahul Kumar, Cameron Woehler, Bhavana Priya Kanumuri
- */
 public class DrawPanel extends JPanel {
 
     private ArrayList<View.Rectangle> rectanglesClicked;
@@ -23,19 +19,12 @@ public class DrawPanel extends JPanel {
         setLayout(null);
     }
 
-    /**
-     * tracks the number of boxes clicked
-     * @param rectangle the class created
-     */
+
     public void boxClickTracker(Rectangle rectangle) {
         rectanglesClicked.add(rectangle);
         this.repaint();
     }
 
-    /**
-     * draws the rectangle classes and the relationships between them
-     * @param g graphics component
-     */
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);

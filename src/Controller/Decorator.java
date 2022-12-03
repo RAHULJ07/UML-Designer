@@ -6,6 +6,7 @@ import java.awt.*;
  * @author Haritej Lakshmi Narayan, Chris Lazar, Sunayana Gupta, Rahul Kumar, Cameron Woehler, Bhavana Priya Kanumuri
  */
 public class Decorator implements IArrow{
+
     protected IArrow iArrow;
     /**
      * Initializing iArrow

@@ -10,11 +10,6 @@ import Model.LineCoordinates;
 import Model.RectangleModel;
 import Model.Storage;
 
-/**
- * TextPanel inherits from Observer. TextPanel observer the DrawPanel, to create the class text in the text panel
- * TextPanel is also a singleton class.
- * @author Haritej Lakshmi Narayan, Chris Lazar, Sunayana Gupta, Rahul Kumar, Cameron Woehler, Bhavana Priya Kanumuri
- */
 public class TextPanel extends Observer {
 
     private static TextPanel textPanel;
@@ -30,21 +25,13 @@ public class TextPanel extends Observer {
         code=new StringBuilder();
     }
 
-    /**
-     * getter method to get the instance of text panel from the application panel, if it exists or it creates a new instance
-     * @return instance of text panel
-     */
     public static TextPanel getTextPanel(){
         if(textPanel==null){
             textPanel= new TextPanel();
         }
         return textPanel;
     }
-
-    /**
-     * updates the text according to changes observed in the draw panel (observable).
-     * text area returns the class name of the rectangle class created in draw panel.
-     */
+    
     @Override
     public void update(){
         code= new StringBuilder();

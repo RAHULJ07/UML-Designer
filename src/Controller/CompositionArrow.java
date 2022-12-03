@@ -7,7 +7,7 @@ import java.awt.*;
 
 /**
  * CompositionArrow is a decorator(arrowhead) for the Line class. It is an extension of the Decorator class.
- * @author Haritej Lakshmi Narayan, Chris Lazar, Sunayana Gupta, Rahul Kumar, Cameron Woehler, Bhavana Priya Kanumuri
+ * @author Haritej Lakshmi Narayan, Chris Lazar, Sunayana Gupta, Rahul Kumar, Cameron Woehler, Bhavana Priya Kanumuri *
  */
 public class CompositionArrow extends Decorator {
     private LineCoordinates coord;

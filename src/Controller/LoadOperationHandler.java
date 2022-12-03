@@ -7,17 +7,8 @@ import javax.tools.FileObject;
 import java.io.*;
 import java.util.Scanner;
 
-/**
- * Handles load requests from File menu. It loads a user-selected local file and draws classes and their corresponding relationships respectively.
- * LoadOperationHandler realizes IHandler.
- * @author Haritej Lakshmi Narayan, Chris Lazar, Sunayana Gupta, Rahul Kumar, Cameron Woehler, Bhavana Priya Kanumuri
- */
 public class LoadOperationHandler implements IHandler {
 
-    /**
-     * Handles Load request by drawing the classes and relationships between classes from loaded file.
-     * @param type of the request - 'Load'
-     */
     @Override
     public void handleRequest(RequestType type) {
         if(type == RequestType.Load) {
