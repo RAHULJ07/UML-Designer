@@ -9,16 +9,26 @@ public class MainController implements ActionListener {
     protected static MainController instance;
 
     private AppPanelController appPanelController;
-    IHandler newOpHandler;
-    IHandler saveOpHandler;
-    IHandler loadOpHandler;
+    IHandlerAction h1;
+    IHandlerAction h2;
+    IHandlerAction h3;
+    IHandlerAction newOpHandler;
+    IHandlerAction saveOpHandler;
+    IHandlerAction loadOpHandler;
 
     private MainController(){
         appPanelController = new AppPanelController(new AppPanel());
         newOpHandler = new NewOperationHandler();
         saveOpHandler = new SaveOperationHandler();
         loadOpHandler = new LoadOperationHandler();
+        h1= new CompositionHandler();
+        h2= new AssociationHandler();
+        h3 = new InheritanceHandler();
 
+
+        ((CompositionHandler) h1).setSuccessor(h2);
+        ((AssociationHandler) h2).setSuccessor(h3);
+        ((InheritanceHandler) h3).setSuccessor(newOpHandler);
         ((NewOperationHandler)newOpHandler).setSuccessor(saveOpHandler);
         ((SaveOperationHandler)saveOpHandler).setSuccessor(loadOpHandler);
     }
@@ -33,25 +43,7 @@ public class MainController implements ActionListener {
     public void actionPerformed(ActionEvent e){
 
         String action = e.getActionCommand();
-
-        if(action.equals("Composition")){
-            ArrowType.arrowType = "Composition";
-        }
-        else if(action.equals("Association")){
-            ArrowType.arrowType = "Association";
-        }
-        else if(action.equals("Inheritance")){
-            ArrowType.arrowType = "Inheritance";
-        }
-        else if(action.equals("New")){
-            newOpHandler.handleRequest(RequestType.New);
-        }
-        else if(action.equals("Save")){
-            saveOpHandler.handleRequest(RequestType.Save);
-        }else if(action.equals("Load")){
-            loadOpHandler.handleRequest(RequestType.Load);
-        }
-
+        h1.handleRequest(action);
     }
 
     public AppPanelController getAppPanelController() {
