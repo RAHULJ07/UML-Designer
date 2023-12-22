@@ -1,5 +1,5 @@
-<<<<<<< HEAD
-# CSE564-Assignment04
+
+# UML Designer
 #### The application supports 4 broad functionalities.
 * Creation of classes and relationships(Composition, Association and Inheritance).
 * Drag and Drop of class.
@@ -14,5 +14,3 @@
 * Observer
 * Chain of Responsibility
 =======
-# UML-Designer
->>>>>>> cd3f868286fb43fc3d47404861731f6a10228260
