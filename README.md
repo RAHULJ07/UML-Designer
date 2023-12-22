@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # CSE564-Assignment04
 #### The application supports 4 broad functionalities.
 * Creation of classes and relationships(Composition, Association and Inheritance).
@@ -12,3 +13,6 @@
 * Singleton
 * Observer
 * Chain of Responsibility
+=======
+# UML-Designer
+>>>>>>> cd3f868286fb43fc3d47404861731f6a10228260
