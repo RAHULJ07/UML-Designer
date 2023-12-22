@@ -13,4 +13,3 @@
 * Singleton
 * Observer
 * Chain of Responsibility
-=======
